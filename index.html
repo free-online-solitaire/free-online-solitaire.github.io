@@ -94,79 +94,65 @@
       .game-cell img { width: 38px; height: 38px;}
     }
 
-.item-game {
-  display: inline-block;
-  margin: 12px;
+.game-icons-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 10px;
+    padding: 18px 12px 8px 12px;
+    background: #fff;
 }
 
-.cr-item {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-  transition: transform 0.16s, box-shadow 0.18s;
-  overflow: hidden;
+.game-icon-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #f5f5f5;
+    box-shadow: 0 2px 8px #0001;
+    transition: box-shadow 0.18s, transform 0.13s;
+    width: 85px;
+    height: 85px;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
-.cr-item a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
+.game-icon-cell img {
+    width: 74px;
+    height: 74px;
+    object-fit: cover;
+    border-radius: 13px;
+    display: block;
+    background: #eee;
+    transition: transform 0.12s;
+    border: 2px solid #fff;
 }
 
-.cr-detail {
-  padding: 10px 12px;
-  display: flex;
-  align-items: center;
+.game-icon-cell:hover {
+    box-shadow: 0 6px 22px #228cff33;
+    background: #e1f5fe;
+    transform: scale(1.06);
+}
+.game-icon-cell:hover img {
+    transform: scale(1.08);
 }
 
-.cr-item-content {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+@media (max-width: 650px) {
+    .game-icons-panel {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px 6px;
+        padding: 10px 4px 6px 4px;
+    }
+    .game-icon-cell {
+        width: 62px;
+        height: 62px;
+    }
+    .game-icon-cell img {
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+    }
 }
 
-.cr-img {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px #0001;
-  background: #f8f8f8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cr-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.cr-info span {
-  font-size: 18px;
-  font-weight: 600;
-  color: #214365;
-  letter-spacing: 0.1px;
-  transition: color 0.16s;
-}
-
-.cr-item:hover {
-  transform: translateY(-4px) scale(1.035);
-  box-shadow: 0 8px 32px rgba(40,120,180,0.10);
-}
-
-.cr-item:hover .cr-info span {
-  color: #1976d2;
-}
-
-@media (max-width: 600px) {
-  .cr-detail { padding: 8px; }
-  .cr-img { width: 44px; height: 44px; }
-  .cr-info span { font-size: 15px; }
-}
 
 
   </style>
@@ -294,34 +280,18 @@
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <!-- GAMES ICONS GRID -->
-    <div class="games-grid">
-	    
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/adventure-capitalist.jpg" alt="Adventure Capitalist"></a>
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper"></a>
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/blocky-cars.jpg" alt="Blocky Cars"></a>
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/bloons-tower-defense.jpg" alt="Bloons Tower Defense"></a>
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/bloxorz.jpg" alt="Bloxorz"></a>
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/blumgi-castle.jpg" alt="Blumgi Castle"></a>
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/bitlife.jpg" alt="Bitlife"></a>
-  <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/backrooms.jpg" alt="Backrooms"></a>
-	    <div class="item-game">
-  <div class="cr-item">
-    <a href="/subway-surfers">
-      <div class="cr-detail">
-        <div class="cr-item-content">
-          <div class="cr-img">
-            <img loading="lazy" src="/assets/upload/ubg76io/jpg/adventure-capitalist.jpg" title="Adventure Capitalist" alt="Adventure Capitalist">
-          </div>
-          <div class="cr-info">
-            <span>Adventure Capitalist</span>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
+<div class="game-icons-panel">
+  <a class="game-icon-cell" href="/game1.html"><img src="/assets/upload/ubg76io/jpg/adventure-capitalist.jpg" alt="Adventure Capitalist"></a>
+  <a class="game-icon-cell" href="/game2.html"><img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper"></a>
+  <a class="game-icon-cell" href="/game3.html"><img src="/assets/upload/ubg76io/jpg/blocky-cars.jpg" alt="Blocky Cars"></a>
+  <a class="game-icon-cell" href="/game4.html"><img src="/assets/upload/ubg76io/jpg/bloons-tower-defense.jpg" alt="Bloons Tower Defense"></a>
+  <a class="game-icon-cell" href="/game5.html"><img src="/assets/upload/ubg76io/jpg/bloxorz.jpg" alt="Bloxorz"></a>
+  <a class="game-icon-cell" href="/game6.html"><img src="/assets/upload/ubg76io/jpg/blumgi-castle.jpg" alt="Blumgi Castle"></a>
+  <a class="game-icon-cell" href="/game7.html"><img src="/assets/upload/ubg76io/jpg/bitlife.jpg" alt="Bitlife"></a>
+  <a class="game-icon-cell" href="/game8.html"><img src="/assets/upload/ubg76io/jpg/backrooms.jpg" alt="Backrooms"></a>
+  <!-- Add more as needed -->
 </div>
 
-</div>
 
 
  
