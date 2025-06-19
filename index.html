@@ -5,8 +5,6 @@
     <title>Snow Rider 3D - Play Free Online Now!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Snow Rider 3D is a thrilling snowboarding game where you dodge obstacles, collect gifts, and ride endlessly through snowy slopes. Hit the slopes now!">
-    <meta name="keywords" content="snow rider 3d, snowboarding game, 3d snow game, snow rider, winter sports game, online snow game, endless snowboard, snow racing, winter racing game, snowboard adventure, play snow rider, holiday snow game, free snowboarding game, snow rider online, downhill snow game, snow games 3d, ride snow slopes, gift collecting game, winter fun game, snow stunt game">
-    <meta name="publisher" content="Snow Rider 3D Team">
     <link rel="icon" href="/assets/img/logo.svg">
     <style>
         html, body {
@@ -15,179 +13,118 @@
             height: 100%;
             width: 100vw;
             overflow: hidden;
-            background: #173f74;
-            font-family: system-ui, Arial, sans-serif;
         }
         body {
             height: 100vh;
             width: 100vw;
         }
-        /* Game is always fullscreen, even with sidebar */
         #game-iframe {
             position: fixed;
             left: 0; top: 0;
             width: 100vw;
             height: 100vh;
-            min-width: 100vw;
-            min-height: 100vh;
             border: none;
             background: #111;
             z-index: 1;
             display: block;
         }
-        /* Sidebar overlays content, slides in/out */
         .sidebar {
             position: fixed;
-            right: 0; top: 0;
-            width: 320px;
+            top: 0; right: 0;
+            width: 360px;
             height: 100vh;
             background: #fff;
             box-shadow: -2px 0 24px rgba(30,40,90,0.09);
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            padding: 0 0 0 0;
+            padding: 0;
             overflow-y: auto;
-            transition: transform 0.32s cubic-bezier(.77,0,.175,1);
-            z-index: 1002;
-            transform: translateX(0);
+            z-index: 3;
+            transition: transform 0.35s;
         }
         .sidebar.hide {
-            transform: translateX(100%);
+            transform: translateX(110%);
         }
-        /* Sidebar close button inside */
-        .sidebar .close-btn {
-            position: absolute;
-            top: 12px;
-            left: 14px;
-            font-size: 30px;
-            color: #1666c5;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1010;
-        }
-        /* Sidebar content */
-        .sidebar-section-title {
-            width: 100%;
-            padding: 12px 24px 0 42px;
-            font-size: 17px;
-            color: #234;
-            font-weight: 600;
-            margin-top: 8px;
-            margin-bottom: 2px;
-            letter-spacing: 0.2px;
-        }
-        .game-list-sidebar {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px 10px;
-            padding: 24px 20px 8px 38px;
-            width: 100%;
-        }
-        .game-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .game-item a {
-            text-decoration: none;
-            color: #2050a0;
-            font-weight: 600;
-        }
-        .game-img {
-            width: 72px;
-            height: 72px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 6px;
-            border: 2px solid #eee;
-            background: #f9f9f9;
-        }
-        .sidebar-links, .sidebar-tags {
-            width: 92%;
-            padding: 12px 16px 12px 42px;
-            border-top: 1px solid #eee;
-            margin-top: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .sidebar-links a, .sidebar-tags a {
-            color: #2050a0;
-            font-size: 13px;
-            text-decoration: none;
-            background: #f3f6fa;
-            border-radius: 6px;
-            padding: 3px 10px;
-        }
-        .sidebar-links a:hover, .sidebar-tags a:hover { color: #1666c5; background:#e6f1fd; }
-        .sidebar-footer {
-            width: 100%;
-            text-align: left;
-            font-size: 13px;
-            color: #999;
-            padding: 10px 26px 18px 46px;
-            margin-top: 14px;
-            border-top: 1px solid #eee;
-        }
-        /* Toggle button always visible, top-right */
         .toggle-btn {
             position: fixed;
-            top: 32px;
-            right: 0;
-            z-index: 1200;
+            top: 24px;
+            right: 370px;
+            z-index: 5;
             background: #1666c5;
             border: none;
             color: #fff;
             font-size: 30px;
             border-radius: 8px 0 0 8px;
-            width: 40px;
-            height: 54px;
+            width: 38px;
+            height: 52px;
             cursor: pointer;
-            box-shadow: -1px 0 7px #0001;
-            transition: background 0.18s;
+            display: none;
         }
-        .toggle-btn:hover { background: #2359ad; }
-        /* Content overlay area (article) */
-        .main-content {
-            position: absolute;
-            left: 0; top: 0;
-            width: 100vw;
-            min-height: 100vh;
-            z-index: 10;
-            pointer-events: none;
+        .game-icons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px 10px;
+            padding: 20px 14px 10px 14px;
         }
-        .content-container {
-            max-width: 760px;
-            margin: 40px auto 30px auto;
-            background: #fff;
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.14s;
+        }
+        .icon-item:hover {
+            transform: scale(1.1);
+        }
+        .icon-img {
+            width: 58px;
+            height: 58px;
             border-radius: 14px;
-            box-shadow: 0 4px 28px rgba(0,0,0,0.07);
-            padding: 32px 32px 30px 32px;
-            pointer-events: auto;
+            object-fit: cover;
+            border: 2px solid #e3e3e3;
+            margin-bottom: 2px;
         }
-        /* Hide content overlay when sidebar is open */
-        .sidebar:not(.hide) ~ .main-content {
-            opacity: 0.14;
-            pointer-events: none;
-            transition: opacity 0.18s;
+        .icon-title {
+            font-size: 11px;
+            color: #1a237e;
+            font-weight: bold;
+            text-align: center;
         }
-        .sidebar.hide ~ .main-content {
-            opacity: 1;
-            pointer-events: auto;
+        .sidebar-content {
+            padding: 12px 16px 20px 20px;
+            font-family: system-ui, Arial, sans-serif;
+            color: #222;
+            font-size: 16px;
+            overflow-y: auto;
         }
-        @media (max-width: 900px) {
-            .sidebar { width: 88vw; min-width: 120px; }
-            .game-list-sidebar { grid-template-columns: 1fr; }
-            .sidebar-section-title, .sidebar-links, .sidebar-tags, .sidebar-footer { padding-left: 18px; }
+        .sidebar-content h2, .sidebar-content h3 {
+            margin: 0.6em 0 0.3em 0;
         }
-        @media (max-width:600px) {
-            .sidebar { width: 100vw; min-width: 80px; }
-            #game-iframe { width: 100vw !important; }
-            .main-content { padding: 0 0 36px 0;}
-            .content-container { max-width: 98vw; padding: 10px; }
+        .sidebar-content ul {
+            padding-left: 1.3em;
+            margin: 0.5em 0;
+        }
+        .sidebar-content strong {
+            color: #1666c5;
+        }
+        .sidebar-content a {
+            color: #1666c5;
+            text-decoration: underline;
+        }
+        @media (max-width: 1000px) {
+            .sidebar { width: 95vw; min-width: 160px; }
+            .toggle-btn { right: 94vw; }
+            .game-icons-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .sidebar { width: 100vw; min-width: 120px; }
+            .toggle-btn { right: 0; }
+            .sidebar { top: 0; }
+        }
+        @media (max-width: 800px) {
+            .toggle-btn { display: block; }
+            .sidebar { transform: translateX(110%); }
+            .sidebar.show { transform: translateX(0); }
         }
     </style>
 </head>
@@ -201,145 +138,100 @@
     ></iframe>
 
     <!-- Sidebar -->
-    <div class="sidebar hide" id="sidebar">
-        <button class="close-btn" id="closeSidebar">&times;</button>
-        <div class="sidebar-section-title">Popular Games</div>
-        <div class="game-list-sidebar">
-            <div class="game-item">
-                <a href="/game/adventure-capitalist.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/adventure-capitalist.jpg" alt="Adventure Capitalist">
-                    Adventure Capitalist
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/backflipper.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper">
-                    Backflipper
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/backrooms.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/backrooms.jpg" alt="Backrooms">
-                    Backrooms
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/bacon-may-die.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/bacon-may-die.jpg" alt="Bacon May Die">
-                    Bacon May Die
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/bartender-the-right-mix.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/bartender-the-right-mix.jpg" alt="Bartender The Right Mix">
-                    Bartender The Right Mix
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/big-shot-boxing.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/big-shot-boxing.jpg" alt="Big Shot Boxing">
-                    Big Shot Boxing
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/bitlife.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/bitlife.jpg" alt="Bitlife">
-                    Bitlife
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/blockins.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/blockins.jpg" alt="Blockins">
-                    Blockins
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/blocky-cars.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/blocky-cars.jpg" alt="Blocky Cars">
-                    Blocky Cars
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/bloons-tower-defense.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/bloons-tower-defense.jpg" alt="Bloons Tower Defense">
-                    Bloons Tower Defense
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/bloxorz.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/bloxorz.jpg" alt="Bloxorz">
-                    Bloxorz
-                </a>
-            </div>
-            <div class="game-item">
-                <a href="/game/blumgi-castle.html">
-                    <img class="game-img" src="/assets/upload/ubg76io/jpg/blumgi-castle.jpg" alt="Blumgi Castle">
-                    Blumgi Castle
-                </a>
-            </div>
+    <div class="sidebar" id="sidebar">
+        <!-- Game Icons Grid -->
+        <div class="game-icons-grid">
+            <a href="/game/mr-mine.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/mr-mine.png" alt="Mr Mine">
+                <span class="icon-title">Mr Mine</span>
+            </a>
+            <a href="/game/blocky.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/blocky.png" alt="Blocky">
+                <span class="icon-title">Blocky</span>
+            </a>
+            <a href="/game/flappy.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/flappy.png" alt="Flappy">
+                <span class="icon-title">Flappy</span>
+            </a>
+            <a href="/game/eggy-car.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/eggy-car.png" alt="Eggy Car">
+                <span class="icon-title">Eggy Car</span>
+            </a>
+            <a href="/game/stick-merge.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/stick-merge.png" alt="Stick Merge">
+                <span class="icon-title">Stick Merge</span>
+            </a>
+            <a href="/game/yohho.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/yohho.png" alt="Yohho.io">
+                <span class="icon-title">Yohho.io</span>
+            </a>
+            <a href="/game/some-game.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/rocket.png" alt="Some Game">
+                <span class="icon-title">Rocket</span>
+            </a>
+            <a href="/game/another.html" class="icon-item">
+                <img class="icon-img" src="/assets/upload/icons/robot.png" alt="Robot">
+                <span class="icon-title">Robot</span>
+            </a>
         </div>
-        <div class="sidebar-section-title">Categories</div>
-        <div class="sidebar-links">
-            <a href="/category/io.html">.io</a>
-            <a href="/category/action.html">Action</a>
-            <a href="/category/adventure.html">Adventure</a>
-            <a href="/category/arcade.html">Arcade</a>
-            <a href="/category/google.html">Google</a>
-            <a href="/category/idle.html">Idle</a>
-            <a href="/category/multiplayer.html">Multiplayer</a>
-            <a href="/category/puzzle.html">Puzzle</a>
-            <a href="/category/racing.html">Racing</a>
-            <a href="/category/sports.html">Sports</a>
-        </div>
-        <div class="sidebar-section-title">Tags</div>
-        <div class="sidebar-tags">
-            <a href="/search.html?q=race">Race</a>
-            <a href="/search.html?q=stick">Stick</a>
-            <a href="/search.html?q=ball">Ball</a>
-            <a href="/search.html?q=doodle">Doodle</a>
-            <a href="/search.html?q=rush">Rush</a>
-            <a href="/search.html?q=tower-defense">Tower Defense</a>
-        </div>
-        <div class="sidebar-footer">
-            <a href="/about/">About</a> | 
-            <a href="/contact/">Contact</a> | 
-            <a href="/dmca/">DMCA</a> | 
-            <a href="/privacy/">Privacy</a> | 
-            <a href="/terms/">Terms</a>
-        </div>
-    </div>
-    <button class="toggle-btn" id="toggleSidebar" title="Show/hide sidebar">&#9776;</button>
-
-    <!-- Content Area (Article, FAQ, etc) -->
-    <div class="main-content">
-        <div class="content-container">
-            <!-- All your article content here. For brevity, it's not repeated. Use your latest! -->
-            <!-- ... -->
-            <!-- Example: -->
-            <h2>Snow Rider 3D Introduction</h2>
+        <!-- Sidebar Content/Article Area -->
+        <div class="sidebar-content">
+            <div style="margin-bottom:12px;">
+                <span style="display:inline-block;padding:3px 9px;background:#ff4757;color:#fff;font-weight:bold;border-radius:5px;">Hot Games</span>
+                <span style="display:inline-block;padding:3px 9px;background:#1e90ff;color:#fff;font-weight:bold;border-radius:5px;margin-left:6px;">New Games</span>
+            </div>
+            <h2>Snow Rider 3D</h2>
             <p>
-                If you ever dreamed of zipping down snowy slopes without a care in the world, 
-                <a href="https://snow-rider-3d.io"><strong>Snow Rider 3D</strong></a> is your golden ticket. Whether you’re searching for 
-                <strong>snow rider unblocked</strong>, <strong>snow rider 3d unblocked</strong>, or just want to outscore your friends, this game serves up a frosty blast of adrenaline that keeps players coming back for more.
+              If you ever dreamed of zipping down snowy slopes without a care in the world, 
+              <a href="https://snow-rider-3d.io"><strong>Snow Rider 3D</strong></a> is your golden ticket. Whether you’re searching for 
+              <strong>snow rider unblocked</strong>, <strong>snow rider 3d unblocked</strong>, or just want to outscore your friends, this game serves up a frosty blast of adrenaline that keeps players coming back for more.
             </p>
-            <!-- ... (Rest of your full content as before) ... -->
+            <h3>What is Snow Rider 3D?</h3>
+            <p>
+              Simply put, Snow Rider 3D (sometimes called <strong>snowrider 3d</strong>, <strong>sled rider 3d</strong>, or even <strong>snow rider3d</strong>) is a fast-paced endless runner where you steer your sled through a 3D winter wonderland. Dodging obstacles like trees, rolling snowballs, and jolly snowmen, your mission is to go the distance, rack up points, and grab as many gifts as you can. Gifts are not just for show they are the key to unlocking the coolest sleds in the game.
+            </p>
+            <h3>How to Play</h3>
+            <ul>
+              <li>Arrow keys or WASD to steer and jump.</li>
+              <li>Dodge obstacles, collect gifts, unlock sleds.</li>
+              <li>Go for your best score—endless runs!</li>
+            </ul>
+            <h3>Why Play Here?</h3>
+            <ul>
+              <li>Free &amp; unblocked on any device.</li>
+              <li>No download. Fast play.</li>
+              <li>Safe for school, works everywhere!</li>
+            </ul>
+            <h3>FAQ</h3>
+            <b>Q: Is Snow Rider 3D free?</b>
+            <br>A: Absolutely! Just hit play, no downloads needed.<br>
+            <b>Q: Can I play on mobile?</b>
+            <br>A: Yes, Snow Rider 3D works on any device.
         </div>
     </div>
+
+    <!-- Sidebar Toggle Button (hidden on large screens) -->
+    <button class="toggle-btn" id="toggleSidebar">&#9776;</button>
 
     <script>
+        // Responsive sidebar toggle for mobile/tablet
         const sidebar = document.getElementById('sidebar');
         const btn = document.getElementById('toggleSidebar');
-        const closeBtn = document.getElementById('closeSidebar');
-        // Toggle sidebar on burger click
+        function checkWidth() {
+            if (window.innerWidth <= 800) {
+                sidebar.classList.add('hide');
+                btn.style.display = "block";
+            } else {
+                sidebar.classList.remove('hide');
+                btn.style.display = "none";
+            }
+        }
         btn.onclick = function() {
+            sidebar.classList.toggle('show');
             sidebar.classList.toggle('hide');
-            document.body.style.overflow = sidebar.classList.contains('hide') ? '' : 'hidden';
         };
-        // Also allow close inside sidebar
-        closeBtn.onclick = function() {
-            sidebar.classList.add('hide');
-            document.body.style.overflow = '';
-        };
+        window.addEventListener('resize', checkWidth);
+        checkWidth();
     </script>
 </body>
 </html>
