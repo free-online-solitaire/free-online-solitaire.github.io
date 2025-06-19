@@ -11,99 +11,87 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Snow Rider 3D Team">
       
-  <style>
-    html, body {
-      margin: 0; padding: 0; height: 100%; width: 100vw;
-      font-family: 'Segoe UI', Arial, sans-serif; background: #1b093b;
-      overflow: hidden;
-    }
-    #game-iframe {
-      position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
-      border: none; background: #0a093b; z-index: 1;
-    }
-    /* SIDEBAR LAYOUT */
-    .sidebar {
-      position: fixed; right: 0; top: 0; width: 340px; height: 100vh;
-      background: #fff; box-shadow: -2px 0 24px #0002;
-      z-index: 3; display: flex; flex-direction: column; overflow-y: auto;
-      transition: transform .3s; padding-bottom: 0;
-    }
-    .sidebar.hide { transform: translateX(110%);}
-    .toggle-btn {
-      position: fixed; right: 340px; top: 30px; z-index: 10;
-      background: #1873d2; color: #fff; border: none; font-size: 28px;
-      border-radius: 10px 0 0 10px; cursor: pointer; width: 36px; height: 52px;
-      box-shadow: -2px 0 8px #0001;
-      transition: right .3s;
-    }
-    .sidebar.hide + .toggle-btn { right: 0; }
-    /* GAMES GRID */
-    .games-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 10px; padding: 22px 16px 12px 16px; margin: 0;
-    }
-    .game-cell {
-      width: 68px; height: 68px;
-      border-radius: 15px; background: #f8f8fa;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; border: 2px solid #e5e5e5;
-      transition: box-shadow 0.2s;
-    }
-    .game-cell:hover { box-shadow: 0 0 0 2px #3898ec;}
-    .game-cell img {
-      width: 60px; height: 60px; object-fit: cover;
-      border-radius: 12px; display: block;
-    }
-    /* Hot/New Games Buttons */
-    .game-buttons {
-      display: flex; gap: 12px; padding: 0 18px; margin: 10px 0 7px 0;
-    }
-    .hot-btn, .new-btn {
-      font-weight: bold; font-size: 18px; border-radius: 7px;
-      border: none; padding: 2px 14px; margin-bottom: 4px;
-      cursor: pointer;
-    }
-    .hot-btn { background: #fc2567; color: #fff; }
-    .new-btn { background: #1ca7ff; color: #fff; }
-    /* CONTENT */
-    .sidebar-content {
-      padding: 6px 18px 0 18px;
-      flex: 1 1 auto;
-      overflow-y: auto;
-    }
-    .sidebar-content h2, .sidebar-content h3 {
-      margin: 8px 0 7px 0; font-size: 22px; font-weight: 700; color: #181049;
-    }
-    .sidebar-content p, .sidebar-content li, .sidebar-content dt, .sidebar-content dd {
-      font-size: 16px; color: #333; margin: 0 0 10px 0;
-      line-height: 1.54;
-    }
-    .sidebar-content ul { padding-left: 16px; margin-bottom: 10px; }
-    .sidebar-content dt { font-weight: 600; margin-top: 10px; }
-    .sidebar-content dd { margin-left: 0; margin-bottom: 7px;}
-    .sidebar-content a { color: #1873d2; text-decoration: underline;}
-    /* FOOTER */
-    .sidebar-footer {
-      font-size: 13px; color: #888; background: #f4f4f4;
-      text-align: left; padding: 9px 18px 15px 18px;
-      border-top: 1px solid #eaeaea; margin-top: 10px;
-    }
-    .sidebar-footer a { color: #1873d2; text-decoration: underline; margin-right: 8px;}
-    @media (max-width: 900px) {
-      .sidebar { width: 95vw; min-width: 120px;}
-      .toggle-btn { right: 95vw;}
-      .games-grid { grid-template-columns: repeat(4, 1fr);}
-      .game-cell { width: 56px; height: 56px;}
-      .game-cell img { width: 48px; height: 48px;}
-    }
-    @media (max-width:600px) {
-      .sidebar { width: 100vw;}
-      .toggle-btn { right: 0;}
-      .games-grid { grid-template-columns: repeat(4, 1fr);}
-      .game-cell { width: 44px; height: 44px;}
-      .game-cell img { width: 38px; height: 38px;}
-    }
-  </style>
+  <!-- FOOTER -->
+  <div class="sidebar-footer">
+    <a href="/about/">About Us</a>
+    <a href="/contact/">Contact</a>
+    <a href="/dmca/">DMCA</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/terms/">Terms of Use</a>
+  </div>
+</div>
+
+<!-- Sidebar CSS -->
+<style>
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 340px;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.08);
+  z-index: 1001;
+  overflow: hidden;
+}
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px 10px;
+  padding: 15px 15px 10px 15px;
+}
+.game-cell img {
+  width: 62px;
+  height: 62px;
+  border-radius: 13px;
+  object-fit: cover;
+  background: #f4f7fa;
+  border: 2px solid #e8eaee;
+  transition: box-shadow 0.18s;
+}
+.game-cell img:hover {
+  box-shadow: 0 2px 12px #a4cbfd55;
+}
+.sidebar-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 14px 22px 10px 22px;
+  font-size: 16px;
+}
+.sidebar-content h2, .sidebar-content h3 {
+  color: #23325b;
+  margin-top: 18px;
+  margin-bottom: 7px;
+  font-size: 1.22em;
+  font-weight: 700;
+}
+.sidebar-footer {
+  width: 100%;
+  font-size: 13px;
+  color: #667;
+  padding: 14px 10px 14px 24px;
+  background: #f7faff;
+  border-top: 1px solid #e9eff7;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.sidebar-footer a {
+  color: #2255aa;
+  text-decoration: none;
+  font-weight: 500;
+}
+.sidebar-footer a:hover { color: #1666c5; }
+@media (max-width: 750px) {
+  .sidebar {
+    width: 100vw;
+    min-width: 120px;
+  }
+  .games-grid { grid-template-columns: repeat(4, 1fr); }
+}
+</style>
 
 	    <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMGVFPJL5E"></script>
@@ -225,6 +213,7 @@
   <!-- Game Frame -->
   <iframe id="game-iframe" src="https://snow-rider-3d.io/snowrider3d/" allowfullscreen title="Play Snow Rider 3D"></iframe>
 
+<!-- Sidebar -->
 <div class="sidebar" id="sidebar">
   <!-- GAMES ICONS GRID -->
   <div class="games-grid">
@@ -236,108 +225,17 @@
     <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/blumgi-castle.jpg" alt="Blumgi Castle"></a>
     <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/bitlife.jpg" alt="Bitlife"></a>
     <a class="game-cell" href="#"><img src="/assets/upload/ubg76io/jpg/backrooms.jpg" alt="Backrooms"></a>
-    <!-- Add/remove icons as needed -->
+  </div>
 
-</div>
   <!-- SIDEBAR CONTENT (article/faq etc) -->
   <div class="sidebar-content">
-<h2>Snow Rider 3D Introduction</h2>
+    <h2>Snow Rider 3D Introduction</h2>
     <p>
       If you are ever dreamed of zipping down snowy slopes without a care in the world, 
       <a href="https://snow-rider-3d.io"><strong>Snow Rider 3D</strong></a> is your golden ticket. Whether you’re searching for 
       <strong>snow rider unblocked</strong>, <strong>snow rider 3d unblocked</strong>, or just want to outscore your friends, this game serves up a frosty blast of adrenaline that keeps players coming back for more.
     </p>
-
-    <h2>What is Snow Rider 3D?</h2>
-    <p>
-      Simply put, Snow Rider 3D (sometimes called <strong>snowrider 3d</strong>, <strong>sled rider 3d</strong>, or even <strong>snow rider3d</strong>) is a fast-paced endless runner where you steer your sled through a 3D winter wonderland. Dodging obstacles like trees, rolling snowballs, and jolly snowmen, your mission is to go the distance, rack up points, and grab as many gifts as you can. Gifts are not just for show they are the key to unlocking the coolest sleds in the game.
-    </p>
-    <p>
-      From the moment you hit “Start,” you’re in for a thrill ride down the mountain. The farther you go, the trickier it gets. Slippery slopes, sneaky barriers, and the ever present risk of a wipeout keep you on your toes.
-    </p>
-
-    <h2>Why Is Snow Rider 3D So Popular?</h2>
-    <ul>
-      <li><strong>Free &amp; Unblocked:</strong> You can play <a href="https://snow-rider-3d.io">Snow Rider 3D unblocked</a> just about anywhere on your school Chromebook, in Google Classroom, at Hooda Math, Classroom 6x, or even straight from your browser on GitHub. No downloads. No paywalls. Just pure fun.</li>
-      <li><strong>Simple Controls:</strong> Use your arrow keys or WASD to steer left or right, and tap UP to jump. Whether you call it <strong>snowrider</strong>, <strong>sled rider</strong>, or <strong>snow riders 3d</strong>, the controls are always a breeze.</li>
-      <li><strong>Quick Rounds, Endless Challenge:</strong> No two rides are the same. As soon as you wipe out, you’re back at the top, ready to chase a new high score.</li>
-      <li><strong>Unlockable Sleighs:</strong> With every present you collect, you’re closer to unlocking fresh new sleds—from candy-cane classics to neon racers.</li>
-      <li><strong>Perfect for All Ages:</strong> Whether you’re a student sneaking in a quick run during math class, a teacher looking for a safe and fun brain break (<strong>Snow Rider 3D Hooda Math</strong>, anyone?), or just chilling at home, it’s easy to pick up and play.</li>
-    </ul>
-
-    <h2>How to Play Snow Rider 3D (and Win!)</h2>
-    <ol>
-      <li>Head to any <strong>Snow Rider 3D unblocked</strong> site—try searching “Snow Rider 3D unblocked 76,” “unblocked games Snow Rider 3D,” or even “Snow Rider 3D GitHub.”</li>
-      <li>Hit Play and steer your sled using the arrow keys (or WASD).</li>
-      <li>Dodge trees, snowmen, snowballs, and other wintry obstacles.</li>
-      <li>Jump over gaps and tricky hazards with the UP arrow.</li>
-      <li>Grab gifts for points and new sleds.</li>
-      <li>See how far you can go without crashing—your best score will always be waiting!</li>
-    </ol>
-
-    <h2>Controls for Snow Rider 3D</h2>
-    <ul>
-      <li><strong>Left Arrow / A</strong> – Steer Left</li>
-      <li><strong>Right Arrow / D</strong> – Steer Right</li>
-      <li><strong>Up Arrow / W</strong> – Jump (hop over obstacles)</li>
-      <li><strong>Down Arrow / S</strong> – (In some versions) Slow down</li>
-      <li><strong>Touch / Swipe</strong> – On mobile, swipe left/right or tap up to jump</li>
-    </ul>
-    <p>
-      Simple, right? That’s why <a href="https://snow-rider-3d.io">snowrider unblocked</a> is such a hit anyone can play in seconds.
-    </p>
-
-    <h2>What is the Best Sled (or Snowboard) in Snow Rider 3D?</h2>
-    <p>
-      The best sled is the one that matches your style. Some sleds are built for speed, others offer smoother handling. Unlock them by collecting gifts along your run, then try out each one to find your favorite. Looking for a top pick? Many players swear by the neon sled for its perfect blend of speed and control, but it’s all about what feels right for you.
-    </p>
-
-    <h2>Where to Play Snow Rider 3D Unblocked</h2>
-    <ul>
-      <li><strong>Snow Rider 3D Google Classroom:</strong> Many schools add it as a safe, fun brain break!</li>
-      <li><strong>Snow Rider 3D Unblocked 76 / 66 / Hooda Math / Classroom 6x:</strong> Tons of sites keep the game free and open just search these terms or try “snow rider unblocked” for the latest links.</li>
-      <li><strong>GitHub:</strong> Some folks play on open-source gaming pages. “Snow rider 3d github” will get you there.</li>
-    </ul>
-
-    <h2>Frequently Asked Questions about Snow Rider 3D</h2>
-    <dl>
-      <dt><strong>Q: What is Snow Rider 3D about?</strong></dt>
-      <dd>A: <a href="https://snow-rider-3d.io">Snow Rider 3D</a> is an engaging, fast-paced sledding game set on a 3D mountain. Dodge obstacles, collect gifts, and try to ride as far as possible for the highest score. It’s equal parts skill and excitement, perfect for players of any age.</dd>
-
-      <dt><strong>Q: What’s the best Snow Rider 3D snowboard?</strong></dt>
-      <dd>A: While “snowboard” and “sled” get tossed around, all unlockable sleds in <a href="https://snow-rider-3d.io">Snow Rider</a> offer unique designs and feel. Many players favor the neon and candy-cane sleds, but the “best” is the one you control best!</dd>
-
-      <dt><strong>Q: What is a snowrider?</strong></dt>
-      <dd>A: In this game, a snowrider is simply your player character—braving the mountain slopes on a sled (sometimes called a snowboard), dodging danger and chasing new records.</dd>
-
-      <dt><strong>Q: Is Ghost Rider in 3D?</strong></dt>
-      <dd>A: Not in this game! Ghost Rider is a separate comic book and movie character no flaming skulls on the slopes here. But who knows? Maybe a future sled skin!</dd>
-
-      <dt><strong>Q: Is Snow Rider 3D free-to-play?</strong></dt>
-      <dd>A: Yes, absolutely! You can enjoy <a href="https://snow-rider-3d.io">snow rider 3d unblocked</a> for free on all major unblocked game sites, including Hooda Math, Classroom 6x, and others. No downloads or subscriptions—just jump in and ride.</dd>
-
-      <dt><strong>Q: Is Snow Rider 3D suitable for my grade level?</strong></dt>
-      <dd>A: For sure! Snow Rider 3D is easy to pick up, safe for school, and fun for students from elementary through high school.</dd>
-
-      <dt><strong>Q: Can I play Snow Rider 3D on my phone or tablet?</strong></dt>
-      <dd>A: You sure can. Most unblocked games sites and Hooda Math versions are mobile-friendly. Just tap to steer and jump!</dd>
-
-      <dt><strong>Q: Does Snow Rider 3D track my score or progress?</strong></dt>
-      <dd>A: Each run shows your score, best record, and gifts collected. Compete with friends or just try to beat your personal best!</dd>
-
-      <dt><strong>Q: How does Snow Rider 3D help with learning?</strong></dt>
-      <dd>A: Beyond fun, it helps develop quick reflexes, hand-eye coordination, and decision making skills great for a brain break that actually sharpens your mind.</dd>
-
-      <dt><strong>Q: What happens if I can't figure out Snow Rider 3D?</strong></dt>
-      <dd>A: Don’t sweat it! Take your time, practice makes perfect, and there are plenty of walkthroughs and tips online.</dd>
-
-      <dt><strong>Q: Can I share Snow Rider 3D with my friends?</strong></dt>
-      <dd>A: Yes! Just copy and share the link. Try beating each other’s high scores for some friendly competition.</dd>
-
-      <dt><strong>Q: Are there similar games to Snow Rider 3D?</strong></dt>
-      <dd>A: Absolutely. Fans also love Sled Rider 3D, Moto X3M Winter, Geometry Dash Subzero, and other unblocked racing games.</dd>
-    </dl>
-
+    <!-- ... keep the rest of your article content here ... -->
     <h2>Wrapping Up: Ready to Ride?</h2>
     <p>
       If you are itching for some fast-paced winter action, you can’t go wrong with 
@@ -349,7 +247,8 @@
     <p>
       <em>Looking for more games or tips to master the slopes? Stick around your next winter adventure is just a click away!</em>
     </p>
-	  </div>
+  </div>
+
   <!-- FOOTER -->
   <div class="sidebar-footer">
     <a href="/about/">About Us</a>
@@ -358,10 +257,7 @@
     <a href="/privacy/">Privacy Policy</a>
     <a href="/terms/">Terms of Use</a>
   </div>
-	    </div>
-
-
-
+</div>
   <button class="toggle-btn" id="toggleSidebar" title="Show/hide sidebar">&#187;</button>
   <script>
     const sidebar = document.getElementById('sidebar');
