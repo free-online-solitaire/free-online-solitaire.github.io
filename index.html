@@ -8,35 +8,62 @@
     <link rel="icon" href="/assets/img/logo.svg">
     <style>
         html, body {
-            height: 100%;
             margin: 0;
             padding: 0;
-            background: #102348;
+            height: 100%;
+            width: 100vw;
+            overflow: hidden;
+            background: #173f74;
         }
         body {
-            min-height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: row;
+            height: 100vh;
+            width: 100vw;
         }
-        .game-area {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(180deg, #173f74 0%, #1666c5 100%);
+        #game-iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            background: #111;
+            display: block;
+            transition: width 0.3s;
         }
         .sidebar {
-            width: 220px;
-            background: #fff;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 230px;
             height: 100vh;
+            background: #fff;
             box-shadow: -2px 0 16px rgba(30,40,90,0.08);
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 12px 0 0 0;
             overflow-y: auto;
-            position: relative;
+            transition: transform 0.3s;
+            z-index: 1001;
+        }
+        .sidebar.hide {
+            transform: translateX(100%);
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 32px;
+            right: 235px;
+            z-index: 1100;
+            background: #1666c5;
+            border: none;
+            color: #fff;
+            font-size: 26px;
+            border-radius: 6px 0 0 6px;
+            width: 36px;
+            height: 48px;
+            cursor: pointer;
+            box-shadow: -1px 0 5px #0002;
+            transition: right 0.3s;
+        }
+        .sidebar.hide + .toggle-btn {
+            right: 0;
         }
         .ad-section {
             width: 85%;
@@ -101,31 +128,23 @@
         }
         @media (max-width:600px) {
             .sidebar { display: none; }
-            .game-area { width: 100vw; }
+            #game-iframe { width: 100vw !important; }
         }
     </style>
 </head>
 <body>
-    <!-- Main Game Area -->
-    <div class="game-area">
-        <iframe
-            src="https://snow-rider-3d.io/snowrider3d/"
-            width="1020"
-            height="600"
-            frameborder="0"
-            allowfullscreen
-            style="border-radius:18px;background:#000;box-shadow:0 0 18px rgba(0,0,0,0.15);"
-            title="Play Snow Rider 3D"
-        ></iframe>
-    </div>
+    <!-- Fullscreen Game Area -->
+    <iframe
+        id="game-iframe"
+        src="https://snow-rider-3d.io/snowrider3d/"
+        allowfullscreen
+        title="Play Snow Rider 3D"
+    ></iframe>
+
     <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="ad-section">
-            <!-- Your ad code or image here -->
-            ADVERTISEMENT
-        </div>
+    <div class="sidebar" id="sidebar">
+        <div class="ad-section">ADVERTISEMENT</div>
         <div class="sidebar-icons">
-            <!-- Only Snow Rider 3D content/icons below -->
             <a class="icon-link" href="/">
                 <img class="icon-img" src="/assets/img/logo.svg" alt="Snow Rider 3D">
                 <span class="icon-title">Snow Rider 3D</span>
@@ -157,5 +176,13 @@
             <a href="/contact/">Contact</a>
         </div>
     </div>
+    <button class="toggle-btn" id="toggleSidebar" title="Show/hide sidebar">&#9776;</button>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const btn = document.getElementById('toggleSidebar');
+        btn.onclick = function() {
+            sidebar.classList.toggle('hide');
+        };
+    </script>
 </body>
 </html>
