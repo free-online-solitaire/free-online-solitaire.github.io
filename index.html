@@ -96,57 +96,48 @@
 
 .game-icon-cell {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 86px;
-    height: 86px;
-    margin: 0 auto;
-    cursor: pointer;
-    transition: box-shadow .18s;
-    border-radius: 14px;
+    display: inline-block;
+    margin: 5px;
 }
 .game-icon-cell img {
-    width: 86px;
-    height: 86px;
+    width: 90px;         /* or your icon size */
+    height: 90px;
     object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 2px 8px #0002;
-    background: #f3f6fa;
-    border: 2px solid #f5f5f5;
+    border-radius: 16px;
     display: block;
-    transition: filter 0.14s;
+    transition: filter 0.12s;
+    background: #eee;
+    border: none;
 }
-.game-icon-cell:hover img,
-.game-icon-cell:focus img {
-    filter: brightness(0.65) blur(1px);
-}
-
-/* Centered overlay title */
 .game-icon-title {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(28,28,28, 0.86);
+    left: 50%;
+    bottom: 10px;    /* <--- lower, closer to bottom */
+    transform: translateX(-50%);
+    background: rgba(24,24,24,0.88);
     color: #fff;
-    font-size: 20px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 9px;
+    font-size: 17px;
     font-weight: bold;
-    letter-spacing: 0.02em;
-    padding: 8px 15px 7px 15px;
-    border-radius: 7px;
-    white-space: nowrap;
     pointer-events: none;
     opacity: 0;
+    transition: opacity 0.18s;
+    white-space: nowrap;
     z-index: 2;
-    box-shadow: 0 2px 12px #0003;
-    transition: opacity 0.20s;
-    text-shadow: 0 2px 8px #0008;
+    box-shadow: 0 2px 10px #0002;
+    text-shadow: 0 2px 4px #000a;
+    letter-spacing: 0.5px;
 }
-
 .game-icon-cell:hover .game-icon-title,
 .game-icon-cell:focus .game-icon-title {
     opacity: 1;
 }
+.game-icon-cell:hover img,
+.game-icon-cell:focus img {
+    filter: brightness(0.72) blur(0.5px);
+}
+
 
 	  @media (max-width: 650px) {
     .game-icons-panel { grid-template-columns: repeat(3, 1fr); gap: 10px 6px; }
@@ -285,9 +276,10 @@
     <span class="game-icon-title">Adventure Capitalist</span>
   </a>
 
-<a class="game-icon-cell" href="/game/backflipper.html" data-title="Backflipper">
-  <img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper">
-</a>
+<div class="game-icon-cell">
+  <img src="/upload/cache/upload/imgs/subway-surfers-m240x240.jpg" alt="Subway Surfers">
+  <span class="game-icon-title">Subway Surfers</span>
+</div>
 
 
 	<a class="game-icon-cell" href="/game2.html"><img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper"></a>
