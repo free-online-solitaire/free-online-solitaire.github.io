@@ -117,15 +117,6 @@
         gap: 9px 6px;
         padding: 10px 4px 6px 4px;
     }
-    .game-icon-cell {
-        width: 62px;
-        height: 62px;
-    }
-    .game-icon-cell img {
-        width: 52px;
-        height: 52px;
-        border-radius: 10px;
-    }
 }
 	 /* Custom tooltip */
 .game-icon-cell::after {
@@ -156,6 +147,59 @@
     opacity: 1;
     transform: translateX(-50%) translateY(120%);
 }
+
+	  .game-icon-wrap {
+    display: inline-block;
+    margin: 10px;
+}
+
+.game-icon-cell {
+    position: relative;
+    display: block;
+    width: 90px;  /* Adjust size as needed */
+    height: 90px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f5f7fa;
+    box-shadow: 0 2px 12px #0001;
+}
+
+.game-icon-cell img {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    display: block;
+    transition: filter 0.12s;
+}
+
+.game-icon-title {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(24,24,24,0.85);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.18s;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.game-icon-cell:hover .game-icon-title,
+.game-icon-cell:focus .game-icon-title {
+    opacity: 1;
+}
+
+.game-icon-cell:hover img,
+.game-icon-cell:focus img {
+    filter: brightness(0.80);
+}
+
 
 
 
@@ -294,6 +338,13 @@
 <a class="game-icon-cell" href="/game/backflipper.html" data-title="Backflipper">
   <img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper">
 </a>
+	<div class="game-icon-wrap">
+  <a class="game-icon-cell" href="/game/subway-surfers.html">
+    <img src="/assets/upload/ubg76io/jpg/subway-surfers.jpg" alt="Subway Surfers">
+    <span class="game-icon-title">Subway Surfers</span>
+  </a>
+</div>
+
 	<a class="game-icon-cell" href="/game2.html"><img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper"></a>
   <a class="game-icon-cell" href="/game3.html"><img src="/assets/upload/ubg76io/jpg/blocky-cars.jpg" alt="Blocky Cars"></a>
   <a class="game-icon-cell" href="/game4.html"><img src="/assets/upload/ubg76io/jpg/bloons-tower-defense.jpg" alt="Bloons Tower Defense"></a>
