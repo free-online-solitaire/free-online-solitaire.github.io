@@ -114,6 +114,8 @@
     height: 85px;
     overflow: hidden;
     margin: 0 auto;
+    position: relative;
+
 }
 
 .game-icon-cell img {
@@ -151,6 +153,32 @@
         height: 52px;
         border-radius: 10px;
     }
+}
+	  /* Tooltip styles */
+.game-icon-cell::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%) translateY(100%);
+    background: rgba(34, 34, 34, 0.93);
+    color: #fff;
+    padding: 5px 13px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 15px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 99;
+    transition: opacity 0.14s, transform 0.14s;
+    box-shadow: 0 2px 10px #0004;
+    font-family: inherit;
+    letter-spacing: 0.2px;
+}
+
+.game-icon-cell:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(128%);
 }
 
 
@@ -281,8 +309,10 @@
   <div class="sidebar" id="sidebar">
     <!-- GAMES ICONS GRID -->
 <div class="game-icons-panel">
-  <a class="game-icon-cell" href="/game1.html"><img src="/assets/upload/ubg76io/jpg/adventure-capitalist.jpg" alt="Adventure Capitalist"></a>
-  <a class="game-icon-cell" href="/game2.html"><img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper"></a>
+<a class="game-icon-cell" href="/game1.html" data-title="Adventure Capitalist">
+  <img src="/assets/upload/ubg76io/jpg/adventure-capitalist.jpg" alt="Adventure Capitalist">
+</a>
+	<a class="game-icon-cell" href="/game2.html"><img src="/assets/upload/ubg76io/jpg/backflipper.jpg" alt="Backflipper"></a>
   <a class="game-icon-cell" href="/game3.html"><img src="/assets/upload/ubg76io/jpg/blocky-cars.jpg" alt="Blocky Cars"></a>
   <a class="game-icon-cell" href="/game4.html"><img src="/assets/upload/ubg76io/jpg/bloons-tower-defense.jpg" alt="Bloons Tower Defense"></a>
   <a class="game-icon-cell" href="/game5.html"><img src="/assets/upload/ubg76io/jpg/bloxorz.jpg" alt="Bloxorz"></a>
