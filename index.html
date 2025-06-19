@@ -99,6 +99,8 @@
     overflow: hidden;
     margin: 0 auto;
     position: relative;
+    display: inline-block;
+    margin: 5px;
 
 }
 
@@ -138,31 +140,34 @@
         border-radius: 10px;
     }
 }
-	  /* Tooltip styles */
+	 /* Custom tooltip */
 .game-icon-cell::after {
     content: attr(data-title);
     position: absolute;
     left: 50%;
     bottom: -10px;
     transform: translateX(-50%) translateY(100%);
-    background: rgba(34, 34, 34, 0.93);
+    background: rgba(30, 34, 44, 0.97);
     color: #fff;
-    padding: 5px 13px;
+    padding: 4px 12px;
     border-radius: 6px;
     white-space: nowrap;
     font-size: 15px;
-    pointer-events: none;
     opacity: 0;
-    z-index: 99;
-    transition: opacity 0.14s, transform 0.14s;
-    box-shadow: 0 2px 10px #0004;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity 0.18s, transform 0.18s;
+    box-shadow: 0 2px 12px #0002;
     font-family: inherit;
     letter-spacing: 0.2px;
+    font-weight: 500;
 }
 
-.game-icon-cell:hover::after {
+/* Show tooltip on hover */
+.game-icon-cell:hover::after,
+.game-icon-cell:focus::after {
     opacity: 1;
-    transform: translateX(-50%) translateY(128%);
+    transform: translateX(-50%) translateY(120%);
 }
 
 
