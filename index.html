@@ -19,7 +19,7 @@
     }
     #game-iframe {
       position: fixed; left: 0; top: 0; width: 100%; height: 100%;
-      border: none; background: #0a093b; z-index: 1;
+      border: none; background: #fff; z-index: 1;
     }
     /* SIDEBAR LAYOUT */
     .sidebar {
@@ -163,6 +163,7 @@
   <div class="sidebar" id="sidebar">
   <div class="sidebar-scroll">
     <!-- GAMES ICONS GRID -->
+	  <div class="game-list">
 <div class="item-game">
 <div class="cr-item">
   <a href="/game/adventure-capitalist.html">
@@ -609,7 +610,7 @@
     </div>
   </div>
 </div>
-
+  </div>
   <button class="toggle-btn" id="toggleSidebar" title="Show/hide sidebar">&#187;</button>
   <script>
     const sidebar = document.getElementById('sidebar');
